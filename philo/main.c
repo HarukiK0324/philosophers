@@ -6,32 +6,11 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 18:29:00 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/04/09 10:37:29 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/04/10 09:06:20 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-typedef struct s_philo
-{
-    int id;
-    pthread_mutex_t *lfork;
-    pthread_mutex_t *rfork;
-    long last_meal;
-    int times_ate;
-    int died;
-} t_philo;
-
-typedef struct s_table
-{
-    int num_philos;
-    int time_to_die;
-    int time_to_eat;
-    int time_to_sleep;
-    int must_eat_count;
-    t_philo philos[200];
-    pthread_mutex_t *forks[200];
-} t_table;
 
 void *philosopher(int *fork[])
 {
@@ -98,7 +77,7 @@ t_table *init_table(int argc, char *argv[])
       table->must_eat_count = to_int(argv[5]);
    i = -1;
    while(i++ < table->num_philos)
-      table->forks[i] = init_fork();
+      &table->forks[i] = init_fork();
    i = -1;
    while(i++ < table->num_philos)
       init_philos(table, i);
