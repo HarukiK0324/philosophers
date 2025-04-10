@@ -148,7 +148,7 @@ int main()
 {
     long start_time;
     t_table table;
-    table.num_philos = 6;
+    table.num_philos = 7;
     int i;
 
     for (i = 0; i < table.num_philos; i++)
