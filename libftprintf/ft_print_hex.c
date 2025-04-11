@@ -6,7 +6,7 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:16:47 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/04/11 09:45:12 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/04/11 09:59:45 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	hex_size(unsigned int num)
 	return (i);
 }
 
-int	ft_print_hex_lower(unsigned int num,char c)
+int	ft_print_hex(unsigned int num,char c)
 {
 	if (num >= 16)
 		ft_print_hex_lower(num / 16,c);
