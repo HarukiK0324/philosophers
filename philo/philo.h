@@ -6,6 +6,7 @@
 #include <pthread.h>
 #include <sys/time.h>
 #include <unistd.h>
+#define MAX_PHILOS 200
 
 typedef struct s_philo
 {
@@ -28,9 +29,12 @@ typedef struct s_table
 {
     int num_philos;
     int must_eat_count;
-    pthread_t checker;
-    t_philo philos[200];
-    pthread_mutex_t forks[200];
+    int died;
+    int all_ate;
+    pthread_t eat_thread;
+    pthread_t death_thread;
+    t_philo philos[MAX_PHILOS];
+    pthread_mutex_t forks[MAX_PHILOS];
     pthread_mutex_t print_lock;
 } t_table;
 
