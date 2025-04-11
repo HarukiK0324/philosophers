@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <sys/time.h>
+#include <unistd.h>
 
 typedef struct s_philo
 {
@@ -20,13 +21,13 @@ typedef struct s_philo
     int time_to_sleep;
     long last_meal;
     int times_ate;
-    int must_eat_count;
     int died;
 } t_philo;
 
 typedef struct s_table
 {
     int num_philos;
+    int must_eat_count;
     pthread_t checker;
     t_philo philos[200];
     pthread_mutex_t forks[200];
