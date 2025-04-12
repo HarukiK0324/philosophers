@@ -6,7 +6,7 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 20:28:00 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/04/12 21:00:18 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/04/12 21:25:38 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ void	*philosopher(void *arg)
 
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
+	{
 		philo_print(philo->print_lock, philo, "is thinking");
+		if (philo->id == 0 && philo->table->num_philos % 2 == 1
+			&& philo->table->num_philos >= 3)
+			ft_usleep(2 * philo->time_to_eat);
+	}
 	while (1)
 	{
 		pthread_mutex_lock(&philo->table->print_lock);
@@ -28,7 +33,6 @@ void	*philosopher(void *arg)
 		if (!check)
 			break ;
 		get_fork(philo);
-		philo_print(philo->print_lock, philo, "is sleeping");
 		ft_usleep(philo->time_to_sleep);
 		philo_print(philo->print_lock, philo, "is thinking");
 		if (philo->num_philos % 2 == 1)

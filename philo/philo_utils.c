@@ -6,7 +6,7 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 17:36:14 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/04/12 20:49:44 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/04/12 21:24:05 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,5 @@ void	get_fork(t_philo *philo)
 	pthread_mutex_unlock(&philo->table->eat_count_lock);
 	pthread_mutex_unlock(philo->lfork);
 	pthread_mutex_unlock(philo->rfork);
+	philo_print(philo->print_lock, philo, "is sleeping");
 }
