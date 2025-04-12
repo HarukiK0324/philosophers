@@ -6,7 +6,7 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 17:36:14 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/04/12 18:47:54 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:29:36 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,32 @@ void philo_print(pthread_mutex_t *print_lock, t_philo *philo, char *message)
     timestamp = get_time() - philo->start_time;
     printf("%ld %d %s\n", timestamp, philo->id + 1, message);
     pthread_mutex_unlock(print_lock);
+}
+
+void get_fork(t_philo *philo)
+{
+	if (philo->id % 2 == 0)
+	{
+		pthread_mutex_lock(philo->rfork);
+		philo_print(philo->print_lock, philo, "has taken a fork");
+		pthread_mutex_lock(philo->lfork);
+		philo_print(philo->print_lock, philo, "has taken a fork");
+	}
+	else
+	{
+		pthread_mutex_lock(philo->lfork);
+		philo_print(philo->print_lock, philo, "has taken a fork");
+		pthread_mutex_lock(philo->rfork);
+		philo_print(philo->print_lock, philo, "has taken a fork");
+	}
+	pthread_mutex_lock(&philo->table->last_meal_lock);
+	philo->last_meal = get_time();
+	pthread_mutex_unlock(&philo->table->last_meal_lock);
+	philo_print(philo->print_lock, philo, "is eating");
+	ft_usleep(philo->time_to_eat);
+	pthread_mutex_lock(&philo->table->eat_count_lock);
+	philo->eat_count++;
+	pthread_mutex_unlock(&philo->table->eat_count_lock);
+	pthread_mutex_unlock(philo->lfork);
+	pthread_mutex_unlock(philo->rfork);
 }
