@@ -6,7 +6,7 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 20:28:00 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/04/12 20:29:30 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:33:15 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void *philosopher(void *arg)
         pthread_mutex_unlock(&philo->table->print_lock);
         if (!should_continue)
             break;
-		get_fork_and_eat(philo);
+		get_fork(philo);
         philo_print(philo->print_lock, philo, "is sleeping");
         ft_usleep(philo->time_to_sleep);
         philo_print(philo->print_lock, philo, "is thinking");
@@ -37,7 +37,7 @@ void *philosopher(void *arg)
     return (NULL);
 }
 
-void *check_time(t_table *table,int i)
+int check_time(t_table *table,int i)
 {
 	long timestamp;
 
@@ -49,8 +49,9 @@ void *check_time(t_table *table,int i)
 		printf("%ld %d died\n", get_time() - table->philos[i].start_time, i + 1);
 		pthread_mutex_unlock(&table->print_lock);
 		pthread_mutex_unlock(&table->last_meal_lock);
-		return (NULL);
+		return -1;
 	}
+    return 0;
 }
 
 void *death_check(void *arg)
@@ -71,7 +72,7 @@ void *death_check(void *arg)
         while (++i < table->num_philos)
         {
             pthread_mutex_lock(&table->last_meal_lock);
-            if(check_time(table,i) == NULL)
+            if(check_time(table,i) == -1)
 				return NULL;
             pthread_mutex_unlock(&table->last_meal_lock);
         }
