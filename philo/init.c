@@ -6,7 +6,7 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 17:34:24 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/04/12 18:37:50 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:49:35 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_table(t_table *table, int argc, char *argv[])
 	int	i;
 
 	table->died = 0;
-    table->all_ate = 0;
+	table->all_ate = 0;
 	table->num_philos = to_int(argv[1]);
 	table->must_eat_count = -1;
 	if (argc == 6)
@@ -43,7 +43,7 @@ void	init_table(t_table *table, int argc, char *argv[])
 		pthread_mutex_init(&table->forks[i++], NULL);
 	pthread_mutex_init(&table->print_lock, NULL);
 	pthread_mutex_init(&table->eat_count_lock, NULL);
-    pthread_mutex_init(&table->last_meal_lock, NULL);
+	pthread_mutex_init(&table->last_meal_lock, NULL);
 	i = 0;
 	while (i < table->num_philos)
 		init_philos(table, i++, argv);
