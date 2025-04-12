@@ -6,7 +6,7 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 20:28:00 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/04/12 20:52:28 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/04/12 21:00:18 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	*death_check(void *arg)
 				return (NULL);
 			pthread_mutex_unlock(&table->last_meal_lock);
 		}
-		usleep(1000);
 	}
 	return (NULL);
 }
@@ -125,7 +124,6 @@ void	*eat_check(void *arg)
 			pthread_mutex_unlock(&table->print_lock);
 			return (NULL);
 		}
-		usleep(1000);
 	}
 	return (NULL);
 }
