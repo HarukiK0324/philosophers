@@ -6,7 +6,7 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 18:29:00 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/04/12 21:05:36 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/04/12 21:06:36 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	clean_up(t_table *table)
 
 int	main(int argc, char *argv[])
 {
-	int		i;
 	t_table	table;
 
 	if ((argc != 5 && argc != 6) || invalid_args(argc, argv))
