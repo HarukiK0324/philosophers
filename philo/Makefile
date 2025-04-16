@@ -5,7 +5,7 @@ NAME = philo
 SRC_DIR = .
 OBJ_DIR = obj
 
-SRC = $(wildcard $(SRC_DIR)/*.c)
+SRC = $(SRC_DIR)/init.c $(SRC_DIR)/main.c $(SRC_DIR)/philo_utils.c $(SRC_DIR)/threads.c $(SRC_DIR)/utils.c
 OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 all: $(NAME)
