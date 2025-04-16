@@ -6,7 +6,7 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 18:29:00 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/04/12 21:06:36 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/04/16 11:24:59 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char *argv[])
 	if ((argc != 5 && argc != 6) || invalid_args(argc, argv))
 	{
 		printf("Format: number_of_philosophers time_to_die time_to_eat \
-            time_to_sleep [number_of_times_each_philosopher_must_eat]\n");
+time_to_sleep [number_of_times_each_philosopher_must_eat]\n");
 		return (0);
 	}
 	init_table(&table, argc, argv);
